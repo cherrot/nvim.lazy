@@ -1,18 +1,4 @@
 return {
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      -- colorscheme = "catppuccin-frappe",
-      colorscheme = "catppuccin",
-    },
-  },
-  {
-    "catppuccin/nvim",
-    opts = {
-      transparent_background = true,
-    },
-  },
-
   -- for typescript, LazyVim also includes extra specs to properly setup lspconfig,
   -- treesitter, mason and typescript.nvim. So instead of the above, you can use:
   { import = "lazyvim.plugins.extras.lang.typescript" },
@@ -40,36 +26,8 @@ return {
   { import = "lazyvim.plugins.extras.lang.yaml" },
   -- https://www.lazyvim.org/extras/lsp/none-ls
   -- { import = "lazyvim.plugins.extras.lsp.none-ls" },
-
-  -- add more treesitter parsers
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, {
-        "make",
-      })
-    end,
-  },
-
-  -- add any tools you want to have installed below
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ui = { border = "rounded" },
-      ensure_installed = {
-        "stylua",
-        "shellcheck",
-        "shfmt",
-        -- "flake8", -- Python
-        -- "bash-language-server", -- "bashls",
-        -- "clangd",
-        -- "html-lsp", -- "html",
-        -- "json-lsp", -- "jsonls",
-        -- "lua-language-server", -- "lua_ls",
-        -- "python-lsp-server", -- pylsp
-        -- "helm-ls",
-        "buf-language-server",
-      },
-    },
-  },
+  -- show function name on the top line when scrolling
+  { import = "lazyvim.plugins.extras.ui.treesitter-context" },
+  -- yet another code outline plugin
+  -- { import = "lazyvim.plugins.extras.editor.aerial" },
 }
