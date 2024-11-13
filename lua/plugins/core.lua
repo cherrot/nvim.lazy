@@ -10,8 +10,8 @@ return {
   { import = "lazyvim.plugins.extras.linting.eslint" },
   { import = "lazyvim.plugins.extras.formatting.prettier" },
 
-  -- https://www.lazyvim.org/extras/coding/copilot
-  { import = "lazyvim.plugins.extras.coding.copilot" },
+  -- https://www.lazyvim.org/extras/ai/copilot
+  { import = "lazyvim.plugins.extras.ai.copilot" },
   -- https://www.lazyvim.org/extras/lang/go
   { import = "lazyvim.plugins.extras.lang.go" },
   { import = "lazyvim.plugins.extras.lang.helm" },
