@@ -11,7 +11,15 @@ return {
       openai = {
         endpoint = os.getenv("OPENAI_ENDPOINT") .. "/v1",
         api_key_name = "OPENAI_API_KEY", -- the shell command must prefixed with `^cmd:(.*)`
-        model = "claude-3-5-sonnet-20240620",
+        -- model = "claude-3-5-sonnet-20240620",
+        model = "claude-3-5-sonnet-20241022",
+      },
+      behaviour = {
+        auto_suggestions = true, -- Experimental stage
+        auto_set_highlight_group = true,
+        auto_set_keymaps = true,
+        auto_apply_diff_after_generation = false,
+        support_paste_from_clipboard = false,
       },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -24,7 +32,7 @@ return {
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
       -- "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      -- "zbirenbaum/copilot.lua", -- for providers='copilot'
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
       {
         -- support for image pasting
         "HakonHarnes/img-clip.nvim",
