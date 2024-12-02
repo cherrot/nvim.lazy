@@ -30,4 +30,8 @@ return {
   { import = "lazyvim.plugins.extras.ui.treesitter-context" },
   -- yet another code outline plugin
   -- { import = "lazyvim.plugins.extras.editor.aerial" },
+
+  { import = "lazyvim.plugins.extras.coding.mini-surround" },
+  -- annotate (comment) your functions via <leader>cn
+  { import = "lazyvim.plugins.extras.coding.neogen" },
 }
