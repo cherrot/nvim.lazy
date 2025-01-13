@@ -1,5 +1,27 @@
 return {
   {
+    "saghen/blink.cmp",
+    opts = {
+      sources = {
+        -- adding any nvim-cmp sources here will enable them
+        -- with blink.compat
+        compat = { "avante_commands", "avante_mentions", "avante_files" },
+      },
+    },
+  },
+  {
+    "saghen/blink.compat",
+    lazy = true,
+    opts = {},
+    config = function()
+      -- monkeypatch cmp.ConfirmBehavior for Avante
+      require("cmp").ConfirmBehavior = {
+        Insert = "insert",
+        Replace = "replace",
+      }
+    end,
+  },
+  {
     -- <Leader>aa to toggle sidebar
     "yetone/avante.nvim",
     event = "VeryLazy",
@@ -15,11 +37,17 @@ return {
         model = "claude-3-5-sonnet-20241022",
       },
       behaviour = {
-        auto_suggestions = true, -- Experimental stage
+        auto_suggestions = false, -- Experimental stage
         auto_set_highlight_group = true,
         auto_set_keymaps = true,
         auto_apply_diff_after_generation = false,
         support_paste_from_clipboard = false,
+      },
+      file_selector = {
+        --- @alias FileSelectorProvider "native" | "fzf" | "telescope" | string
+        provider = "fzf",
+        -- Options override for custom providers
+        provider_opts = {},
       },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
