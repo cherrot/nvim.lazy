@@ -11,8 +11,9 @@ map("n", "<A-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Wi
 map("n", "<A-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
 
 -- Leave H/L as motion keys
-vim.keymap.del("n", "<S-h>")
-vim.keymap.del("n", "<S-l>")
-map("n", "<A-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
-map("n", "<A-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+-- vim.keymap.del("n", "<S-h>")
+-- vim.keymap.del("n", "<S-l>")
+-- map("n", "<A-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+-- map("n", "<A-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+--
 -- map("i", "<C-i>", "<cmd>lua require('avante').get_suggestion():suggest()<cr>", { desc = "Trigger Suggestion" })
