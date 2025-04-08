@@ -10,6 +10,12 @@ map("n", "<A-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
 map("n", "<A-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
 map("n", "<A-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
 
+vim.keymap.del("n", "s")
+vim.keymap.del("n", "t")
+map("n", "t", function()
+  require("flash").jump()
+end, { desc = "Flash search" })
+
 -- Leave H/L as motion keys
 -- vim.keymap.del("n", "<S-h>")
 -- vim.keymap.del("n", "<S-l>")

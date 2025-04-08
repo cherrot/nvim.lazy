@@ -35,6 +35,7 @@ return {
         api_key_name = "OPENAI_API_KEY", -- the shell command must prefixed with `^cmd:(.*)`
         -- model = "claude-3-5-sonnet-20240620",
         model = "claude-3-5-sonnet-20241022",
+        -- max_tokens = 8192,
       },
       behaviour = {
         auto_suggestions = true, -- Experimental stage
