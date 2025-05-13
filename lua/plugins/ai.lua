@@ -29,11 +29,13 @@ return {
     version = false, -- set this if you want to always pull the latest change
     opts = {
       provider = "claude",
-      auto_suggestions_provider = "openai",
+      auto_suggestions_provider = "gemini-flash",
 
       openai = {
-        endpoint = os.getenv("OPENAI_ENDPOINT") .. "/v1",
-        model = "gpt-4o",
+        -- endpoint = os.getenv("OPENAI_ENDPOINT") .. "/v1",
+        endpoint = "https://aihubmix.com",
+        api_key_name = "AIHUBMIX_API_KEY",
+        model = "gpt-4.1-mini",
         timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
         temperature = 0,
         max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
@@ -42,11 +44,28 @@ return {
 
       claude = {
         endpoint = "https://aihubmix.com",
+        api_key_name = "AIHUBMIX_API_KEY",
         model = "claude-3-7-sonnet-20250219",
-        timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
+        timeout = 30000,
         temperature = 0,
-        max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+        max_completion_tokens = 8192,
       },
+
+      aihubmix = {
+        model = "gemini-2.5-flash-preview-04-17",
+        timeout = 30000,
+        temperature = 0,
+        max_completion_tokens = 8192,
+        reasoning_effort = "medium",
+      },
+
+      vendors = {
+        ["gemini-flash"] = {
+          __inherited_from = "openai",
+          model = "gemini-2.5-flash-preview-04-17-nothink",
+        },
+      },
+
       -- -- these tools may conflict with mcp-hub
       -- disabled_tools = {
       --   "list_files",
