@@ -58,7 +58,7 @@ return {
         -- "lua-language-server", -- "lua_ls",
         -- "python-lsp-server", -- pylsp
         -- "helm-ls",
-        "buf-language-server",
+        "buf",
       },
     },
   },
