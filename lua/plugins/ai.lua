@@ -28,7 +28,7 @@ return {
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
     opts = {
-      provider = "claude",
+      provider = "aihubmix",
       auto_suggestions_provider = "gemini-flash",
 
       openai = {
@@ -45,14 +45,14 @@ return {
       claude = {
         endpoint = "https://aihubmix.com",
         api_key_name = "AIHUBMIX_API_KEY",
-        model = "claude-3-7-sonnet-20250219",
+        model = "claude-sonnet-4-20250514",
         timeout = 30000,
         temperature = 0,
         max_completion_tokens = 8192,
       },
 
       aihubmix = {
-        model = "gemini-2.5-flash-preview-04-17",
+        model = "gemini-2.5-flash-preview-05-20",
         timeout = 30000,
         temperature = 0,
         max_completion_tokens = 8192,
@@ -62,7 +62,7 @@ return {
       vendors = {
         ["gemini-flash"] = {
           __inherited_from = "openai",
-          model = "gemini-2.5-flash-preview-04-17-nothink",
+          model = "gemini-2.5-flash-preview-05-20-nothink",
         },
       },
 
