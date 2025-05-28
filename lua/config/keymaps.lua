@@ -10,9 +10,10 @@ map("n", "<A-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
 map("n", "<A-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
 map("n", "<A-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
 
-vim.keymap.del("n", "s")
-vim.keymap.del("n", "t")
-map("n", "t", function()
+vim.keymap.del({ "n", "v" }, "s")
+vim.keymap.del({ "n", "v" }, "t")
+vim.keymap.del({ "n", "v" }, "T")
+map({ "n", "v" }, "t", function()
   require("flash").jump()
 end, { desc = "Flash search" })
 
