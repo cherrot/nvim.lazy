@@ -29,38 +29,43 @@ return {
     version = false, -- set this if you want to always pull the latest change
     opts = {
       provider = "aihubmix",
-      auto_suggestions_provider = "gemini-flash",
+      auto_suggestions_provider = "gemini_flash",
 
-      openai = {
-        -- endpoint = os.getenv("OPENAI_ENDPOINT") .. "/v1",
-        endpoint = "https://aihubmix.com",
-        api_key_name = "AIHUBMIX_API_KEY",
-        model = "gpt-4.1-mini",
-        timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
-        temperature = 0,
-        max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
-        -- reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
-      },
+      providers = {
+        claude = {
+          endpoint = "https://aihubmix.com",
+          api_key_name = "AIHUBMIX_API_KEY",
+          model = "claude-sonnet-4-20250514",
+          timeout = 30000,
+          extra_request_body = {
+            temperature = 0.75,
+            max_tokens = 4096,
+          },
+        },
+        openai = {
+          -- endpoint = os.getenv("OPENAI_ENDPOINT") .. "/v1",
+          endpoint = "https://aihubmix.com",
+          api_key_name = "AIHUBMIX_API_KEY",
+          model = "gpt-4.1-mini",
+          timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
+          extra_request_body = {
+            temperature = 0,
+            max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+            reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+          },
+        },
 
-      claude = {
-        endpoint = "https://aihubmix.com",
-        api_key_name = "AIHUBMIX_API_KEY",
-        model = "claude-sonnet-4-20250514",
-        timeout = 30000,
-        temperature = 0,
-        max_completion_tokens = 8192,
-      },
-
-      aihubmix = {
-        model = "gemini-2.5-flash-preview-05-20",
-        timeout = 30000,
-        temperature = 0,
-        max_completion_tokens = 8192,
-        reasoning_effort = "medium",
-      },
-
-      vendors = {
-        ["gemini-flash"] = {
+        aihubmix = {
+          model = "gemini-2.5-flash-preview-05-20",
+          -- model = "gemini-2.5-pro-preview-06-05",
+          timeout = 30000,
+          extra_request_body = {
+            temperature = 0,
+            max_completion_tokens = 8192,
+            reasoning_effort = "medium",
+          },
+        },
+        gemini_flash = {
           __inherited_from = "openai",
           model = "gemini-2.5-flash-preview-05-20-nothink",
         },
@@ -114,11 +119,12 @@ return {
     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
+      "echasnovski/mini.pick", -- for file_selector provider mini.pick
       "ibhagwan/fzf-lua", -- for file_selector provider fzf
+      "folke/snacks.nvim", -- for input provider snacks
       "echasnovski/mini.icons",
       {
         -- support for image pasting
