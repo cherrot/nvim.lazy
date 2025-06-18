@@ -29,7 +29,7 @@ return {
     version = false, -- set this if you want to always pull the latest change
     opts = {
       provider = "aihubmix",
-      auto_suggestions_provider = "gemini_flash",
+      auto_suggestions_provider = "quick",
 
       providers = {
         claude = {
@@ -56,8 +56,7 @@ return {
         },
 
         aihubmix = {
-          model = "gemini-2.5-flash-preview-05-20",
-          -- model = "gemini-2.5-pro-preview-06-05",
+          model = "gemini-2.5-pro",
           timeout = 30000,
           extra_request_body = {
             temperature = 0,
@@ -65,9 +64,9 @@ return {
             reasoning_effort = "medium",
           },
         },
-        gemini_flash = {
+        quick = {
           __inherited_from = "openai",
-          model = "gemini-2.5-flash-preview-05-20-nothink",
+          model = "aihubmix-router",
         },
       },
 
