@@ -28,18 +28,28 @@ return {
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
     opts = {
-      provider = "aihubmix",
-      auto_suggestions_provider = "quick",
+      provider = "claude",
+      auto_suggestions_provider = "claude",
 
       providers = {
+        -- claude = {
+        --   endpoint = "https://aihubmix.com",
+        --   api_key_name = "AIHUBMIX_API_KEY",
+        --   model = "claude-sonnet-4-20250514",
+        --   timeout = 30000,
+        --   extra_request_body = {
+        --     temperature = 0.75,
+        --     max_tokens = 4096,
+        --   },
+        -- },
         claude = {
-          endpoint = "https://aihubmix.com",
-          api_key_name = "AIHUBMIX_API_KEY",
-          model = "claude-sonnet-4-20250514",
+          endpoint = os.getenv("ANTHROPIC_BASE_URL"),
+          api_key_name = "ANTHROPIC_API_KEY",
+          model = "kimi-k2-turbo-preview",
           timeout = 30000,
           extra_request_body = {
-            temperature = 0.75,
-            max_tokens = 4096,
+            temperature = 0.6, -- for K2
+            max_tokens = 16384,
           },
         },
         openai = {
