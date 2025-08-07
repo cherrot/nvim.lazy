@@ -11,6 +11,10 @@ return {
     name = "catppuccin",
     opts = {
       transparent_background = true,
+      float = {
+        transparent = true,
+        solid = false, -- use solid styling for floating windows, see |winborder|
+      },
     },
   },
 
