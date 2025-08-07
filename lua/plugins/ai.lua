@@ -24,11 +24,19 @@ return {
   {
     -- <Leader>aa to toggle sidebar
     "yetone/avante.nvim",
+    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+    build = "make",
     event = "VeryLazy",
-    lazy = false,
     version = false, -- set this if you want to always pull the latest change
+    ---@module 'avante'
+    ---@type avante.Config
     opts = {
+      ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
+      ---@type Provider
       provider = "claude",
+      ---@alias Mode "agentic" | "legacy"
+      ---@type Mode
+      mode = "agentic",
       auto_suggestions_provider = "claude",
 
       providers = {
@@ -94,9 +102,6 @@ return {
       --   "bash",
       -- },
       behaviour = {
-        enable_cursor_planning_mode = true, -- Whether to enable Cursor Planning Mode. Default to false.
-        enable_claude_text_editor_tool_mode = true, -- claude only
-
         auto_suggestions = true, -- Experimental stage
         auto_set_highlight_group = true,
         auto_set_keymaps = true,
@@ -123,11 +128,7 @@ return {
         }
       end,
     },
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    build = "make",
-    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
     dependencies = {
-      "nvim-treesitter/nvim-treesitter",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
