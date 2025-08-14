@@ -1,3 +1,6 @@
+-- stylua: ignore
+-- if true then return {} end
+
 return {
   {
     "saghen/blink.cmp",
@@ -33,11 +36,11 @@ return {
     opts = {
       ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
       ---@type Provider
-      provider = "claude",
+      provider = "moonshot",
       ---@alias Mode "agentic" | "legacy"
       ---@type Mode
       mode = "agentic",
-      auto_suggestions_provider = "claude",
+      auto_suggestions_provider = "moonshot",
 
       providers = {
         -- claude = {
@@ -47,17 +50,17 @@ return {
         --   timeout = 30000,
         --   extra_request_body = {
         --     temperature = 0.75,
-        --     max_tokens = 4096,
+        --     max_tokens = 20480,
         --   },
         -- },
-        claude = {
+        moonshot = {
           endpoint = os.getenv("ANTHROPIC_BASE_URL"),
           api_key_name = "ANTHROPIC_API_KEY",
           model = "kimi-k2-turbo-preview",
           timeout = 30000,
           extra_request_body = {
-            temperature = 0.6, -- for K2
-            max_tokens = 16384,
+            temperature = 0.6,
+            max_tokens = 32768,
           },
         },
         openai = {
@@ -162,5 +165,21 @@ return {
         ft = { "markdown", "Avante" },
       },
     },
+  },
+
+  {
+    "ravitemer/mcphub.nvim",
+    lazy = false,
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
+    },
+    -- comment the following line to ensure hub will be ready at the earliest
+    cmd = "MCPHub", -- lazy load by default
+    build = "npm install -g mcp-hub@latest", -- Installs required mcp-hub npm module
+    -- uncomment this if you don't want mcp-hub to be available globally or can't use -g
+    -- build = "bundled_build.lua",  -- Use this and set use_bundled_binary = true in opts  (see Advanced configuration)
+    config = function()
+      require("mcphub").setup()
+    end,
   },
 }
