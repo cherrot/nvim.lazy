@@ -1,4 +1,3 @@
--- stylua: ignore
 -- if true then return {} end
 
 return {
@@ -23,6 +22,30 @@ return {
         Replace = "replace",
       }
     end,
+  },
+  {
+    "coder/claudecode.nvim",
+    dependencies = { "folke/snacks.nvim" },
+    config = true,
+    keys = {
+      { "<leader>k", nil, desc = "AI/Claude Code" },
+      { "<leader>kk", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+      { "<leader>kf", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+      { "<leader>kr", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
+      { "<leader>kc", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+      { "<leader>km", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
+      { "<leader>kb", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
+      { "<leader>ks", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
+      {
+        "<leader>ks",
+        "<cmd>ClaudeCodeTreeAdd<cr>",
+        desc = "Add file",
+        ft = { "NvimTree", "neo-tree", "oil", "minifiles" },
+      },
+      -- Diff management
+      { "<leader>ka", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+      { "<leader>kd", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+    },
   },
   {
     -- <Leader>aa to toggle sidebar
