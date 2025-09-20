@@ -142,26 +142,26 @@ return {
       },
 
       -- other config
-      -- The system_prompt type supports both a string and a function that returns a string. Using a function here allows dynamically updating the prompt with mcphub
-      system_prompt = function()
-        local hub = require("mcphub").get_hub_instance()
-        return hub:get_active_servers_prompt()
-      end,
-      -- The custom_tools type supports both a list and a function that returns a list. Using a function here prevents requiring mcphub before it's loaded
-      custom_tools = function()
-        return {
-          require("mcphub.extensions.avante").mcp_tool(),
-        }
-      end,
+      -- -- The system_prompt type supports both a string and a function that returns a string. Using a function here allows dynamically updating the prompt with mcphub
+      -- system_prompt = function()
+      --   local hub = require("mcphub").get_hub_instance()
+      --   return hub:get_active_servers_prompt()
+      -- end,
+      -- -- The custom_tools type supports both a list and a function that returns a list. Using a function here prevents requiring mcphub before it's loaded
+      -- custom_tools = function()
+      --   return {
+      --     require("mcphub.extensions.avante").mcp_tool(),
+      --   }
+      -- end,
     },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
-      "echasnovski/mini.pick", -- for file_selector provider mini.pick
+      "nvim-mini/mini.pick", -- for file_selector provider mini.pick
       "ibhagwan/fzf-lua", -- for file_selector provider fzf
       "folke/snacks.nvim", -- for input provider snacks
-      "echasnovski/mini.icons",
+      "nvim-mini/mini.icons",
       {
         -- support for image pasting
         "HakonHarnes/img-clip.nvim",
@@ -190,19 +190,19 @@ return {
     },
   },
 
-  {
-    "ravitemer/mcphub.nvim",
-    lazy = false,
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
-    },
-    -- comment the following line to ensure hub will be ready at the earliest
-    cmd = "MCPHub", -- lazy load by default
-    build = "npm install -g mcp-hub@latest", -- Installs required mcp-hub npm module
-    -- uncomment this if you don't want mcp-hub to be available globally or can't use -g
-    -- build = "bundled_build.lua",  -- Use this and set use_bundled_binary = true in opts  (see Advanced configuration)
-    config = function()
-      require("mcphub").setup()
-    end,
-  },
+  -- {
+  --   "ravitemer/mcphub.nvim",
+  --   lazy = false,
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
+  --   },
+  --   -- comment the following line to ensure hub will be ready at the earliest
+  --   cmd = "MCPHub", -- lazy load by default
+  --   build = "npm install -g mcp-hub@latest", -- Installs required mcp-hub npm module
+  --   -- uncomment this if you don't want mcp-hub to be available globally or can't use -g
+  --   -- build = "bundled_build.lua",  -- Use this and set use_bundled_binary = true in opts  (see Advanced configuration)
+  --   config = function()
+  --     require("mcphub").setup()
+  --   end,
+  -- },
 }
