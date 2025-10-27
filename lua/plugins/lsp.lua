@@ -15,14 +15,19 @@ return {
     },
   },
   {
-    "neovim/nvim-lspconfig",
-    opts = function()
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      keys[#keys + 1] = { "gd", "<CMD>Glance definitions<CR>", desc = "Preview Definition" }
-      keys[#keys + 1] = { "gr", "<CMD>Glance references<CR>", desc = "Preview References" }
-      keys[#keys + 1] = { "gy", "<CMD>Glance type_definitions<CR>", desc = "Preview T[y]pe Definitions" }
-      keys[#keys + 1] = { "gI", "<CMD>Glance implementations<CR>", desc = "Preview Implementations" }
-    end,
+    "neovim/nvim-lspconfig", -- https://www.lazyvim.org/plugins/lsp
+    opts = {
+      servers = {
+        ["*"] = {
+          keys = {
+            { "gd", "<cmd>Glance definitions<cr>", desc = "Preview Definition" },
+            { "gr", "<cmd>Glance references<cr>", desc = "Preview References" },
+            { "gy", "<cmd>Glance type_definitions<cr>", desc = "Preview T[y]pe Definitions" },
+            { "gI", "<cmd>Glance implementations<cr>", desc = "Preview T[y]pe Implementations" },
+          },
+        },
+      },
+    },
   },
   -- provides a preview window for LSP
   {
