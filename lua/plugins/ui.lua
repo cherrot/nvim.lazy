@@ -3,7 +3,7 @@ return {
     "LazyVim/LazyVim",
     opts = {
       -- colorscheme = "catppuccin-frappe",
-      colorscheme = "catppuccin",
+      colorscheme = "catppuccin-mocha",
     },
   },
   {
@@ -17,7 +17,16 @@ return {
       },
     },
   },
-
+  {
+    "folke/tokyonight.nvim",
+    opts = {
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
+  },
   -- set border for LSP hover
   -- https://github.com/LazyVim/LazyVim/issues/556#issuecomment-1867981476
   {
