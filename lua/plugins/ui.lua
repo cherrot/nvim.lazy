@@ -81,4 +81,30 @@ return {
       },
     },
   },
+  {
+    -- show tabpage indicators in bufferline.
+    "akinsho/bufferline.nvim",
+    opts = {
+      options = {
+        mode = "buffers",
+        show_tab_indicators = true,
+        always_show_bufferline = true,
+        custom_areas = {
+          right = function()
+            local total = vim.fn.tabpagenr("$")
+            if total <= 1 then
+              return {}
+            end
+            return {
+              {
+                text = ("  TABPAGE %d/%d  "):format(vim.fn.tabpagenr(), total),
+                fg = "#1e1e2e",
+                bg = "#f5c2e7",
+              },
+            }
+          end,
+        },
+      },
+    },
+  },
 }

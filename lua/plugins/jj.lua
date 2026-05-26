@@ -1,5 +1,9 @@
 return {
   {
+    "rafikdraoui/jj-diffconflicts",
+    cmd = { "JJDiffConflicts" },
+  },
+  {
     "nicolasgb/jj.nvim",
     version = "*", -- Use latest stable release
     lazy = false,
