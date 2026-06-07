@@ -66,7 +66,7 @@ return {
       vim.keymap.set("n", "<leader>je", cmd.edit, { desc = "JJ edit" })
       vim.keymap.set("n", "<leader>jn", cmd.new, { desc = "JJ new" })
       vim.keymap.set("n", "<leader>js", cmd.status, { desc = "JJ status" })
-      vim.keymap.set("n", "<leader>sj", cmd.squash, { desc = "JJ squash" })
+      vim.keymap.set("n", "<leader>jS", cmd.squash, { desc = "JJ squash" })
       vim.keymap.set("n", "<leader>ju", cmd.undo, { desc = "JJ undo" })
       vim.keymap.set("n", "<leader>jy", cmd.redo, { desc = "JJ redo" })
       vim.keymap.set("n", "<leader>jr", cmd.rebase, { desc = "JJ rebase" })
@@ -100,12 +100,12 @@ return {
 
       -- Pickers
       local picker = require("jj.picker")
-      vim.keymap.set("n", "<leader>gj", function()
+      vim.keymap.set("n", "<leader>jj", function()
         picker.status()
-      end, { desc = "JJ Picker status" })
-      vim.keymap.set("n", "<leader>jgh", function()
+      end, { desc = "JJ show in picker" })
+      vim.keymap.set("n", "<leader>jh", function()
         picker.file_history()
-      end, { desc = "JJ Picker history" })
+      end, { desc = "JJ history picker" })
 
       -- Some functions like `log` can take parameters
       vim.keymap.set("n", "<leader>jL", function()
@@ -116,9 +116,9 @@ return {
 
       -- This is an alias i use for moving bookmarks its so good
       vim.keymap.set("n", "<leader>jt", function()
-        cmd.j("tug")
+        cmd.j("tag")
         cmd.log({})
-      end, { desc = "JJ tug" })
+      end, { desc = "JJ tag" })
 
       local annotate = require("jj.annotate")
       vim.keymap.set("n", "<leader>ja", annotate.file, { desc = "JJ annotate file" })

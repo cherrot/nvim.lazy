@@ -39,6 +39,7 @@ return {
     },
   },
   {
+    -- Tip: in picker preview window, <M-w> to switch focus.
     "folke/snacks.nvim",
     opts = {
       dashboard = {
