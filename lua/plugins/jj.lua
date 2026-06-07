@@ -42,7 +42,7 @@ return {
               describe = "d",
               diff = "<S-d>",
               abandon = "<S-a>",
-              fetch = "<S-f>",
+              -- fetch = "<S-f>",
             },
             status = {
               open_file = "<CR>",
@@ -77,7 +77,7 @@ return {
       vim.keymap.set("n", "<leader>jtd", cmd.tag_delete, { desc = "JJ tag delete" })
       vim.keymap.set("n", "<leader>jtp", cmd.tag_push, { desc = "JJ tag push" })
       vim.keymap.set("n", "<leader>ja", cmd.abandon, { desc = "JJ abandon" })
-      vim.keymap.set("n", "<leader>jf", cmd.fetch, { desc = "JJ fetch" })
+      -- vim.keymap.set("n", "<leader>jf", cmd.fetch, { desc = "JJ fetch" })
       vim.keymap.set("n", "<leader>jp", cmd.push, { desc = "JJ push" })
       vim.keymap.set(
         "n",
