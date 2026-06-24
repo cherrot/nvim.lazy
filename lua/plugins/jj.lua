@@ -1,5 +1,22 @@
 return {
   {
+    "xdagiz/jjui.nvim",
+    lazy = true,
+    cmd = { "Jjui", "JjuiToggle" },
+    keys = {
+      { "<leader>gj", "<cmd>Jjui<cr>", desc = "jjui" },
+      -- { "<leader>gt", "<cmd>JjuiToggle<cr>", desc = "Toggle jj" },
+    },
+    config = function()
+      require("jjui").setup({
+        scaling = 0.7,
+        border = "single",
+        winblend = 0,
+      })
+    end,
+  },
+
+  {
     "rafikdraoui/jj-diffconflicts",
     cmd = { "JJDiffConflicts" },
   },
